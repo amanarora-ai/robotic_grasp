@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+*.pyo
+.jax_cache/
+*.egg-info/
+.ipynb_checkpoints/

@@ -1,0 +1,84 @@
+<mujoco model="vega_ycb_grasp">
+  <include file="vega_right_arm.xml"/>
+
+  <statistic center="0.5 0 0.8" extent="1.5"/>
+
+  <option timestep="0.005" iterations="5" ls_iterations="8" integrator="implicitfast">
+    <flag eulerdamp="disable"/>
+  </option>
+
+  <custom>
+    <numeric data="12" name="max_contact_points"/>
+  </custom>
+
+  <visual>
+    <headlight diffuse="0.6 0.6 0.6" ambient="0.3 0.3 0.3" specular="0 0 0"/>
+    <rgba haze="0.15 0.25 0.35 1"/>
+    <global azimuth="120" elevation="-20"/>
+  </visual>
+
+  <asset>
+    <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0"
+             width="512" height="3072"/>
+    <texture type="2d" name="groundplane" builtin="checker" mark="edge"
+             rgb1="0.2 0.3 0.4" rgb2="0.1 0.2 0.3" markrgb="0.8 0.8 0.8"
+             width="300" height="300"/>
+    <material name="groundplane" texture="groundplane" texuniform="true"
+              texrepeat="5 5" reflectance="0.2"/>
+    <material name="table_mat" rgba="0.85 0.75 0.6 1"/>
+    <material name="object_mat" rgba="1 0.3 0.1 1"/>
+  </asset>
+
+  <worldbody>
+    <!-- Camera for video recording -->
+    <camera name="front" pos="1.5 -0.5 1.4" xyaxes="0.7 0.7 0 -0.3 0.3 0.9"/>
+    <camera name="side" pos="-0.2 -1.5 1.2" xyaxes="1 0 0 0 0.5 0.87"/>
+
+    <geom name="floor" type="plane" size="0 0 0.05" material="groundplane" contype="1"/>
+
+    <!-- Table -->
+    <body name="table" pos="0.55 0 0.5">
+      <geom name="table_top" type="box" size="0.35 0.25 0.02"
+            material="table_mat" contype="1" conaffinity="1" friction="1 0.005 0.0001"/>
+      <geom name="table_leg1" type="box" size="0.02 0.02 0.4" pos=" 0.33  0.23 -0.4"/>
+      <geom name="table_leg2" type="box" size="0.02 0.02 0.4" pos="-0.33  0.23 -0.4"/>
+      <geom name="table_leg3" type="box" size="0.02 0.02 0.4" pos=" 0.33 -0.23 -0.4"/>
+      <geom name="table_leg4" type="box" size="0.02 0.02 0.4" pos="-0.33 -0.23 -0.4"/>
+    </body>
+
+    <!-- Placeholder object (cube) — swapped for YCB objects later -->
+    <body name="object" pos="0.55 0 0.545">
+      <freejoint name="object_joint"/>
+      <geom name="object_geom" type="box" size="0.025 0.025 0.025"
+            material="object_mat" condim="4"
+            friction="1 0.1 0.01" contype="2" conaffinity="3"
+            solref="0.01 1" mass="0.1"/>
+      <site name="object_site" pos="0 0 0" size="0.01" rgba="0 0 1 0.5"/>
+    </body>
+  </worldbody>
+
+  <!-- Contact sensors for reward computation -->
+  <sensor>
+    <touch name="thumb_touch"  site="right_thumb_tip"/>
+    <touch name="index_touch"  site="right_index_tip"/>
+    <touch name="middle_touch" site="right_middle_tip"/>
+    <touch name="ring_touch"   site="right_ring_tip"/>
+    <touch name="little_touch" site="right_little_tip"/>
+  </sensor>
+
+  <keyframe>
+    <!--
+      48 qpos values:
+        Lift torso head(3) | L_arm(j1 j2=1.3down j3 j4=-0.5 j5 j6 j7) | L_hand(11) |
+        R_arm(j1 j2=-1.3down j3 j4=-0.5 j5 j6 j7) | R_hand(11) | object_pos(3) object_quat(4)
+      18 ctrl values: R_arm_j1-j7, R_hand(11)
+    -->
+    <key name="home"
+      qpos="0.0 0  0 0 0  1.57 0 0 0 0 0 0  0 0 0 0 0 0 0 0 0 0 0  -1.107 -0.2 -1.071 -0.6 0 0 0  0 0 0 0 0 0 0 0 0 0 0  0.55 0 0.545 1 0 0 0"
+      ctrl="-1.107 -0.2 -1.071 -0.6 0 0 0  0 0 0  0 0  0 0  0 0  0 0"/>
+    <!-- arm reaching toward table: j1 raised, j2 rotated forward, j4 elbow bent -->
+    <key name="grasp_ready"
+      qpos="0.0 0  0 0 0  1.57 0 0 0 0 0 0  0 0 0 0 0 0 0 0 0 0 0  -1.107 -0.414 -1.071 -1.222 0 0 0  0.795 -0.082 -0.078 -0.403 -0.421 -0.402 -0.425 -0.366 -0.378 -0.365 -0.353  0.55 0 0.545 1 0 0 0"
+      ctrl="-1.107 -0.414 -1.071 -1.222 0 0 0  0.795 -0.082 -0.078  -0.403 -0.421  -0.402 -0.425  -0.366 -0.378  -0.365 -0.353"/>
+  </keyframe>
+</mujoco>

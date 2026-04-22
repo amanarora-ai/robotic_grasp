@@ -1,0 +1,194 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mujoco model="vega_1u_f5d6">
+  <compiler angle="radian" meshdir="../dexmate-urdf/robots/humanoid/vega_1u" fitaabb="true" />
+
+  <asset>
+    <mesh name="arm_l2" content_type="model/obj" file="arm_l2.obj" />
+    <mesh name="arm_l3" content_type="model/obj" file="arm_l3.obj" />
+    <mesh name="arm_l4" content_type="model/obj" file="arm_l4.obj" />
+    <mesh name="arm_l5" content_type="model/obj" file="arm_l5.obj" />
+    <mesh name="arm_l7" content_type="model/obj" file="arm_l7.obj" />
+    <mesh name="arm_l8" content_type="model/obj" file="arm_l8.obj" />
+    <mesh name="R_arm_l1" content_type="model/obj" file="R_arm_l1.obj" />
+    <mesh name="R_arm_l6" content_type="model/obj" file="R_arm_l6.obj" />
+    <mesh name="th_l0" content_type="model/obj" file="th_l0.obj" />
+    <mesh name="th_l1" content_type="model/obj" file="th_l1.obj" />
+    <mesh name="th_l2" content_type="model/obj" file="th_l2.obj" />
+    <mesh name="ff_l1" content_type="model/obj" file="ff_l1.obj" />
+    <mesh name="ff_l2" content_type="model/obj" file="ff_l2.obj" />
+    <mesh name="mf_l1" content_type="model/obj" file="mf_l1.obj" />
+    <mesh name="mf_l2" content_type="model/obj" file="mf_l2.obj" />
+    <mesh name="rf_l1" content_type="model/obj" file="rf_l1.obj" />
+    <mesh name="rf_l2" content_type="model/obj" file="rf_l2.obj" />
+    <mesh name="lf_l1" content_type="model/obj" file="lf_l1.obj" />
+    <mesh name="lf_l2" content_type="model/obj" file="lf_l2.obj" />
+    <mesh name="R_hand_base" content_type="model/obj" file="R_hand_base.obj" />
+  </asset>
+
+  <worldbody>
+    <body name="lift_link" pos="0 0 0.01" euler="0 0 1.5708">
+      <inertial pos="-2.81873e-06 0.00032 0.5141" quat="0.707929 2.50056e-06 -2.49475e-06 0.706284" mass="4.35777" diaginertia="0.19546 0.19538 0.01487" />
+      <joint name="Lift" pos="0 0 0" axis="0 0 1" type="slide" range="0 0.4" stiffness="1000000" damping="30000" springref="0.0" />
+      <body name="torso_flip_link" pos="0 -0.06187 0.786">
+        <inertial pos="-1.71092e-05 0.06383 0.00204" quat="0.00111999 0.707106 -0.000342317 0.707107" mass="0.71794" diaginertia="0.00244 0.00128 0.00119" />
+        <joint name="torso_flip" pos="0 0 0" axis="1 0 0" range="0 1" stiffness="10000" damping="1000" springref="0.0" />
+        <body name="head_l1" pos="-0.0725005 0.11202 0.27382" quat="0.707109 0 0 -0.707105">
+          <inertial pos="1.30097e-05 0.07221 -0.02629" quat="0.49923 0.501216 -0.500726 0.498824" mass="0.4378" diaginertia="0.000510004 0.00043 0.000249996" />
+          <joint name="head_j1" pos="0 0 0" axis="0 1 0" range="-1.483 1.483" actuatorfrcrange="-6 6" stiffness="5000" damping="500" springref="0.0" />
+          <body name="head_l2" pos="0 0.0725 -0.0035">
+            <inertial pos="3.533e-05 0.01618 0.03389" quat="0.350014 0.613798 -0.6146 0.350727" mass="0.60772" diaginertia="0.000559127 0.00052 0.000330873" />
+            <joint name="head_j2" pos="0 0 0" axis="0 0 1" range="-2.792 2.792" actuatorfrcrange="-2.5 2.5" stiffness="5000" damping="500" springref="0.0" />
+            <body name="head_l3" pos="0 0.002 0.0495">
+              <inertial pos="0.00816 -0.00315 0.03745" quat="0.696552 0.711501 0.0644306 -0.0665663" mass="0.63278" diaginertia="0.00083183 0.00077837 0.0003398" />
+              <joint name="head_j3" pos="0 0 0" axis="0 -1 0" range="-1.378 1.483" actuatorfrcrange="-6 6" stiffness="5000" damping="500" springref="0.0" />
+              <geom type="sphere" size="0.001" mass="0.001" rgba="0 0 0 0" contype="0" conaffinity="0" /></body>
+          <geom type="sphere" size="0.001" mass="0.001" rgba="0 0 0 0" contype="0" conaffinity="0" /></body>
+        <geom type="sphere" size="0.001" mass="0.001" rgba="0 0 0 0" contype="0" conaffinity="0" /></body>
+        <body name="L_arm_l1" pos="0.16946 0.0385211 0.25982" quat="0.707109 0 0 -0.707105">
+          <inertial pos="0.0285 0.05287 0.00576" quat="-0.255121 0.630514 0.198529 0.705656" mass="1.41351" diaginertia="0.00213118 0.00208636 0.00143245" />
+          <joint name="L_arm_j1" pos="0 0 0" axis="0 1 0" range="-3.071 3.071" actuatorfrcrange="-150 150" stiffness="2000" damping="100" springref="1.57" />
+          <body name="L_arm_l2" pos="0.04 0.06 0.0454">
+            <inertial pos="0.08194 -1.45468e-06 -0.04058" quat="0.457673 0.539062 0.538618 0.458081" mass="1.40594" diaginertia="0.00441 0.00418705 0.00161295" />
+            <joint name="L_arm_j2" pos="0 0 0" axis="0 0 1" range="-0.453 1.553" actuatorfrcrange="-150 150" stiffness="2000" damping="100" springref="0.0" />
+            <body name="L_arm_l3" pos="0.1644 0 -0.043">
+              <inertial pos="0.07978 0.00403 0.0398" quat="0.624128 0.310071 0.356645 0.622193" mass="1.16094" diaginertia="0.00337779 0.00326218 0.00100003" />
+              <joint name="L_arm_j3" pos="0 0 0" axis="1 0 0" range="-3.071 3.071" actuatorfrcrange="-80 80" stiffness="2000" damping="100" springref="0.0" />
+              <body name="L_arm_l4" pos="0.113 0.0433 0.06">
+                <inertial pos="0.09219 -0.03791 -0.02953" quat="0.511272 0.518486 0.586576 0.354544" mass="0.93204" diaginertia="0.00309063 0.00282456 0.000884815" />
+                <joint name="L_arm_j4" pos="0 0 0" axis="0 1 0" range="-3.071 0.244" actuatorfrcrange="-80 80" stiffness="2000" damping="100" springref="0.0" />
+                <body name="L_arm_l5" pos="0.1938 -0.0434 -0.04">
+                  <inertial pos="0.06497 -0.00266 1.20027e-05" quat="0.506 0.506108 0.493368 0.494375" mass="0.64582" diaginertia="0.000560131 0.00052 0.000339869" />
+                  <joint name="L_arm_j5" pos="0 0 0" axis="1 0 0" range="-3.071 3.071" actuatorfrcrange="-25 25" stiffness="2000" damping="100" springref="0.0" />
+                  <body name="L_arm_l6" pos="0.0762 0.0319 0">
+                    <inertial pos="0.05526 -0.02615 -0.00267" quat="0.570723 0.57676 0.421305 0.405123" mass="0.5542" diaginertia="0.000436354 0.000380033 0.000273612" />
+                    <joint name="L_arm_j6" pos="0 0 0" axis="0 1 0" range="-1.396 1.396" actuatorfrcrange="-25 25" stiffness="2000" damping="100" springref="0.0" />
+                    <body name="L_arm_l7" pos="0.065 -0.032 0.0319">
+                      <inertial pos="0.0452514 0.00436067 -0.0101716" quat="0.382071 0.454685 0.769182 0.235885" mass="0.61048" diaginertia="0.00263031 0.00248684 0.000465186" />
+                      <joint name="L_arm_j7" pos="0 0 0" axis="0 0 1" range="-1.378 1.117" actuatorfrcrange="-25 25" stiffness="2000" damping="100" springref="0.0" />
+                      <body name="L_th_l0" pos="0.16219 -0.0229399 -0.0123492" quat="0.0817258 0.0724032 0.70237 0.703388">
+                        <inertial pos="0.00118 0.00613 -0.00211" quat="0.709379 0.621333 0.189518 0.273514" mass="0.00232" diaginertia="2.23082e-07 1.77429e-07 9.84702e-08" />
+                        <joint name="L_th_j0" pos="0 0 0" axis="-1 0 0" range="-0.0158 1.605" actuatorfrcrange="-1 1" stiffness="500" damping="20" springref="0.0" />
+                        <body name="L_th_l1" pos="-0.00675 0.02098 -0.0027" quat="0.999979 0 0 0.00646495">
+                          <inertial pos="-0.01803 0.00796 -0.00016" quat="0.107106 0.698915 -0.107327 0.698947" mass="0.00666" diaginertia="2.21298e-06 2.04055e-06 3.25225e-07" />
+                          <joint name="L_th_j1" pos="0 0 0" axis="0 0 -1" range="-0.3468 0.1834" actuatorfrcrange="-1 1" stiffness="500" damping="20" springref="0.0" />
+                          <body name="L_th_l2" pos="-0.05088 0.01301 -0.00202">
+                            <inertial pos="-0.00825 0.00781 0.0019" quat="0.611565 0.611505 0.354991 0.355008" mass="0.00503" diaginertia="3.0114e-07 2.35219e-07 1.66173e-07" />
+                            <joint name="L_th_j2" pos="0 0 0" axis="0 0 -1" range="-0.4298 0.2731" actuatorfrcrange="-0.5 0.5" stiffness="500" damping="20" springref="0.0" />
+                            <geom type="sphere" size="0.001" mass="0.001" rgba="0 0 0 0" contype="0" conaffinity="0" /></body>
+                        <geom type="sphere" size="0.001" mass="0.001" rgba="0 0 0 0" contype="0" conaffinity="0" /></body>
+                      <geom type="sphere" size="0.001" mass="0.001" rgba="0 0 0 0" contype="0" conaffinity="0" /></body>
+                      <body name="L_ff_l1" pos="0.2288 0.00274019 -0.00151857" quat="0.0304928 -0.0279323 0.674889 0.73676">
+                        <inertial pos="-0.01602 -9.85142e-05 -0.00754" quat="6.36227e-05 0.608518 4.02913e-05 0.79354" mass="0.00155" diaginertia="1.69648e-07 1.54822e-07 6.13745e-08" />
+                        <joint name="L_ff_j1" pos="0 0 0" axis="0 1 0" range="-1.0946 0.2891" actuatorfrcrange="-0.5 0.5" stiffness="500" damping="20" springref="0.0" />
+                        <body name="L_ff_l2" pos="-0.03406 0 -0.01141" quat="1 0 0 -5e-05">
+                          <inertial pos="-0.01405 -9.47216e-05 -0.01877" quat="0.944307 5.9785e-06 0.329064 -2.08334e-06" mass="0.00416" diaginertia="5.82315e-07 5.74333e-07 6.77393e-08" />
+                          <joint name="L_ff_j2" pos="0 0 0" axis="0 1 0" range="-1.2101 0.3681" actuatorfrcrange="-0.5 0.5" stiffness="500" damping="20" springref="0.0" />
+                          <geom type="sphere" size="0.001" mass="0.001" rgba="0 0 0 0" contype="0" conaffinity="0" /></body>
+                      <geom type="sphere" size="0.001" mass="0.001" rgba="0 0 0 0" contype="0" conaffinity="0" /></body>
+                      <body name="L_mf_l1" pos="0.23208 0.00704007 -0.0217186" quat="0.00468901 -0.00468904 0.707093 0.707089">
+                        <inertial pos="0.03832 -0.00051 -0.01587" quat="0.154673 0.637314 0.100585 0.748191" mass="0.10211" diaginertia="0.00032431 0.000264215 9.18208e-05" />
+                        <joint name="L_mf_j1" pos="0 0 0" axis="0 1 0" range="-1.0844 0.2801" actuatorfrcrange="-0.5 0.5" stiffness="500" damping="20" springref="0.0" />
+                        <body name="L_mf_l2" pos="-0.03829 0 -0.01467">
+                          <inertial pos="-0.01427 9.50657e-05 -0.01861" quat="0.942408 4.79348e-06 0.334466 -1.70123e-06" mass="0.00416" diaginertia="5.8231e-07 5.74328e-07 6.77388e-08" />
+                          <joint name="L_mf_j2" pos="0 0 0" axis="0 1 0" range="-1.2026 0.3533" actuatorfrcrange="-0.5 0.5" stiffness="500" damping="20" springref="0.0" />
+                          <geom type="sphere" size="0.001" mass="0.001" rgba="0 0 0 0" contype="0" conaffinity="0" /></body>
+                      <geom type="sphere" size="0.001" mass="0.001" rgba="0 0 0 0" contype="0" conaffinity="0" /></body>
+                      <body name="L_rf_l1" pos="0.22935 0.00628994 -0.0415586" quat="-0.0200039 0.020004 0.706826 0.706822">
+                        <inertial pos="-0.01575 -9.85177e-05 -0.00809" quat="6.79739e-05 0.594627 3.87497e-05 0.804002" mass="0.00155" diaginertia="1.69652e-07 1.54825e-07 6.13748e-08" />
+                        <joint name="L_rf_j1" pos="0 0 0" axis="0 1 0" range="-1.0154 0.284" actuatorfrcrange="-0.5 0.5" stiffness="500" damping="20" springref="0.0" />
+                        <body name="L_rf_l2" pos="-0.03364 0 -0.01258" quat="1 0 0 -5e-05">
+                          <inertial pos="-0.01273 -9.38053e-05 -0.01968" quat="0.955067 3.19768e-05 0.296389 0.000120023" mass="0.00416" diaginertia="5.82042e-07 5.74059e-07 6.77464e-08" />
+                          <joint name="L_rf_j2" pos="0 0 0" axis="0 1 0" range="-1.1156 0.3599" actuatorfrcrange="-0.5 0.5" stiffness="500" damping="20" springref="0.0" />
+                          <geom type="sphere" size="0.001" mass="0.001" rgba="0 0 0 0" contype="0" conaffinity="0" /></body>
+                      <geom type="sphere" size="0.001" mass="0.001" rgba="0 0 0 0" contype="0" conaffinity="0" /></body>
+                      <body name="L_lf_l1" pos="0.22558 0.00372981 -0.0618286" quat="-0.0398188 0.0434827 0.736186 0.674206">
+                        <inertial pos="-0.01409 0.0001 -0.0074" quat="0 0.590053 0 0.807365" mass="0.00137" diaginertia="1.27487e-07 1.12813e-07 5.56915e-08" />
+                        <joint name="L_lf_j1" pos="0 0 0" axis="0 1 0" range="-1.0118 0.2811" actuatorfrcrange="-0.5 0.5" stiffness="500" damping="20" springref="0.0" />
+                        <body name="L_lf_l2" pos="-0.02974 5.0315e-05 -0.01163" quat="1 1.05275e-05 0 0">
+                          <inertial pos="-0.00835 -0.00012 -0.01408" quat="0.960078 -0.00362174 0.279631 0.00657377" mass="0.00263" diaginertia="1.59092e-07 1.53222e-07 3.74445e-08" />
+                          <joint name="L_lf_j2" pos="0 0 0" axis="0 1 0" range="-1.1073 0.4014" actuatorfrcrange="-0.5 0.5" stiffness="500" damping="20" springref="0.0" />
+                          <geom type="sphere" size="0.001" mass="0.001" rgba="0 0 0 0" contype="0" conaffinity="0" /></body>
+                      <geom type="sphere" size="0.001" mass="0.001" rgba="0 0 0 0" contype="0" conaffinity="0" /></body>
+                    <geom type="sphere" size="0.001" mass="0.001" rgba="0 0 0 0" contype="0" conaffinity="0" /></body>
+                  <geom type="sphere" size="0.001" mass="0.001" rgba="0 0 0 0" contype="0" conaffinity="0" /></body>
+                <geom type="sphere" size="0.001" mass="0.001" rgba="0 0 0 0" contype="0" conaffinity="0" /></body>
+              <geom type="sphere" size="0.001" mass="0.001" rgba="0 0 0 0" contype="0" conaffinity="0" /></body>
+            <geom type="sphere" size="0.001" mass="0.001" rgba="0 0 0 0" contype="0" conaffinity="0" /></body>
+          <geom type="sphere" size="0.001" mass="0.001" rgba="0 0 0 0" contype="0" conaffinity="0" /></body>
+        <geom type="sphere" size="0.001" mass="0.001" rgba="0 0 0 0" contype="0" conaffinity="0" /></body>
+        <body name="R_arm_l1" pos="-0.16946 0.0385189 0.25982" quat="0.707109 0 0 -0.707105">
+          <inertial pos="0.02833 -0.05 0.0054" quat="0.277085 0.637454 -0.224529 0.682981" mass="1.42401" diaginertia="0.0020254 0.00190692 0.00133768" />
+          <joint name="R_arm_j1" pos="0 0 0" axis="0 -1 0" range="-3.071 3.071" actuatorfrcrange="-150 150" />
+          <body name="R_arm_l2" pos="0.04 -0.06 0.0454">
+            <inertial pos="0.08749 -1.34526e-06 -0.04135" quat="0.457673 0.539062 0.538618 0.458081" mass="1.40595" diaginertia="0.00441 0.00418705 0.00161295" />
+            <joint name="R_arm_j2" pos="0 0 0" axis="0 0 1" range="-1.553 0.453" actuatorfrcrange="-150 150" />
+            <body name="R_arm_l3" pos="0.1644 0 -0.043">
+              <inertial pos="0.08127 0.00414 0.04053" quat="0.63585 0.302666 0.36291 0.610233" mass="1.1608" diaginertia="0.00337861 0.0032617 0.000999685" />
+              <joint name="R_arm_j3" pos="0 0 0" axis="1 0 0" range="-3.071 3.071" actuatorfrcrange="-80 80" />
+              <body name="R_arm_l4" pos="0.113 0.0433 0.06">
+                <inertial pos="0.07728 -0.03736 -0.02906" quat="0.511272 0.518486 0.586576 0.354544" mass="0.93204" diaginertia="0.00309063 0.00282456 0.000884815" />
+                <joint name="R_arm_j4" pos="0 0 0" axis="0 1 0" range="-3.071 0.244" actuatorfrcrange="-80 80" />
+                <body name="R_arm_l5" pos="0.1938 -0.0434 -0.04">
+                  <inertial pos="0.06457 0.0025 -1.30383e-05" quat="0.493389 0.494297 0.506112 0.506052" mass="0.64582" diaginertia="0.000560132 0.00052 0.000339868" />
+                  <joint name="R_arm_j5" pos="0 0 0" axis="1 0 0" range="-3.071 3.071" actuatorfrcrange="-25 25" />
+                  <body name="R_arm_l6" pos="0.0762 -0.0319 0">
+                    <inertial pos="0.05525 0.02614 -0.00267" quat="0.404607 0.421355 0.576996 0.570814" mass="0.55372" diaginertia="0.000436454 0.000380035 0.000273511" />
+                    <joint name="R_arm_j6" pos="0 0 0" axis="0 -1 0" range="-1.396 1.396" actuatorfrcrange="-25 25" />
+                    <body name="R_arm_l7" pos="0.065 0.032 0.0319">
+                      <inertial pos="0.0520723 0.0043307 -0.0137021" quat="0.365676 0.517451 0.714231 0.297321" mass="0.59525" diaginertia="0.00161036 0.00135965 0.000563745" />
+                      <joint name="R_arm_j7" pos="0 0 0" axis="0 0 1" range="-1.117 1.378" actuatorfrcrange="-25 25" />
+                      <body name="R_th_l0" pos="0.16219 0.0229699 -0.0123492" quat="0.0816218 -0.0725204 0.703379 -0.702379">
+                        <inertial pos="0.00118 -0.00613 -0.00213" quat="0.620314 0.71027 -0.273242 -0.18991" mass="0.00232" diaginertia="2.23081e-07 1.77428e-07 9.84696e-08" />
+                        <joint name="R_th_j0" pos="0 0 0" axis="1 0 0" range="-0.0158 1.605" actuatorfrcrange="-1 1" />
+                        <body name="R_th_l1" pos="-0.00675 -0.02097 -0.00276" quat="-1.06761e-05 0.0064463 0.999978 0.00144643">
+                          <inertial pos="0.01732 -0.00805 -0.00337" quat="0.152707 0.693916 -0.0697624 0.700211" mass="0.00416" diaginertia="1.176e-06 1.09578e-06 1.77332e-07" />
+                          <joint name="R_th_j1" pos="0 0 0" axis="0 0 -1" range="-0.3468 0.1834" actuatorfrcrange="-1 1" />
+                          <body name="R_th_l2" pos="0.05088 -0.01301 0.00202">
+                            <inertial pos="0.00825 -0.00781 -0.0019" quat="0.611561 0.611495 0.355017 0.355008" mass="0.00503" diaginertia="3.0116e-07 2.35242e-07 1.6618e-07" />
+                            <joint name="R_th_j2" pos="0 0 0" axis="0 0 -1" range="-0.4298 0.2731" actuatorfrcrange="-0.5 0.5" />
+                            <site name="right_thumb_tip" pos="0.0111 -0.0040 -0.0043" size="0.008" rgba="0 1 0 0.3" /><geom type="capsule" mesh="th_l2" fitscale="1.0" rgba="0.5 0.5 0.5 1" group="0" contype="1" conaffinity="1" /></body>
+                        <geom type="capsule" mesh="th_l1" fitscale="0.8" rgba="0.5 0.5 0.5 1" group="0" contype="1" conaffinity="1" /></body>
+                      <geom type="capsule" mesh="th_l0" fitscale="1.0" rgba="0.5 0.5 0.5 1" group="0" contype="1" conaffinity="1" /></body>
+                      <body name="R_ff_l1" pos="0.2288 -0.00271019 -0.00152857" quat="0.0304928 0.0279323 0.674889 -0.73676">
+                        <inertial pos="-0.01602 0.0001 -0.00754" quat="4.12353e-05 0.608528 6.82863e-05 0.793533" mass="0.00155" diaginertia="1.6968e-07 1.54849e-07 6.13801e-08" />
+                        <joint name="R_ff_j1" pos="0 0 0" axis="0 1 0" range="-1.0946 0.2891" actuatorfrcrange="-0.5 0.5" />
+                        <body name="R_ff_l2" pos="-0.03406 0 -0.01141" quat="1 -1.5e-05 -7.5e-10 5e-05">
+                          <inertial pos="-0.01405 9e-05 -0.01877" quat="0.944312 -3.95477e-05 0.329052 -0.000122978" mass="0.00416" diaginertia="5.82486e-07 5.74504e-07 6.77441e-08" />
+                          <joint name="R_ff_j2" pos="0 0 0" axis="0 1 0" range="-1.2101 0.3681" actuatorfrcrange="-0.5 0.5" />
+                          <site name="right_index_tip" pos="-0.020 0.0 -0.030" size="0.008" rgba="0 1 0 0.3" /><geom type="capsule" mesh="ff_l2" fitscale="1.0" rgba="0.5 0.5 0.5 1" group="0" contype="1" conaffinity="1" /></body>
+                      <geom type="capsule" mesh="ff_l1" fitscale="1.0" rgba="0.5 0.5 0.5 1" group="0" contype="1" conaffinity="1" /></body>
+                      <body name="R_mf_l1" pos="0.23208 -0.00702007 -0.0217186" quat="0.00468901 0.00468904 0.707093 -0.707089">
+                        <inertial pos="-0.01788 -0.0001 -0.00978" quat="7.29062e-05 0.577723 4.29038e-05 0.816233" mass="0.0019" diaginertia="2.46887e-07 2.34143e-07 7.72054e-08" />
+                        <joint name="R_mf_j1" pos="0 0 0" axis="0 1 0" range="-1.0844 0.2801" actuatorfrcrange="-0.5 0.5" />
+                        <body name="R_mf_l2" pos="-0.03829 0 -0.01467">
+                          <inertial pos="-0.01427 -9e-05 -0.01861" quat="0.942412 -4.01735e-05 0.334454 -0.000127858" mass="0.00416" diaginertia="5.82468e-07 5.74486e-07 6.7744e-08" />
+                          <joint name="R_mf_j2" pos="0 0 0" axis="0 1 0" range="-1.2026 0.3533" actuatorfrcrange="-0.5 0.5" />
+                          <site name="right_middle_tip" pos="-0.020 0.0 -0.030" size="0.008" rgba="0 1 0 0.3" /><geom type="capsule" mesh="mf_l2" fitscale="1.0" rgba="0.5 0.5 0.5 1" group="0" contype="1" conaffinity="1" /></body>
+                      <geom type="capsule" mesh="mf_l1" fitscale="1.0" rgba="0.5 0.5 0.5 1" group="0" contype="1" conaffinity="1" /></body>
+                      <body name="R_rf_l1" pos="0.22935 -0.00626994 -0.0415586" quat="-0.0200039 -0.020004 0.706826 -0.706822">
+                        <inertial pos="-0.01575 0.0001 -0.00809" quat="4.04546e-05 0.594638 6.95407e-05 0.803994" mass="0.00155" diaginertia="1.69679e-07 1.54849e-07 6.13806e-08" />
+                        <joint name="R_rf_j1" pos="0 0 0" axis="0 1 0" range="-1.0154 0.284" actuatorfrcrange="-0.5 0.5" />
+                        <body name="R_rf_l2" pos="-0.03364 0 -0.01258" quat="1 -1.5e-05 -7.5e-10 5e-05">
+                          <inertial pos="-0.01273 9e-05 -0.01968" quat="0.955066 -9.57594e-06 0.296392 2.97177e-06" mass="0.00416" diaginertia="5.82044e-07 5.7406e-07 6.77476e-08" />
+                          <joint name="R_rf_j2" pos="0 0 0" axis="0 1 0" range="-1.1156 0.3599" actuatorfrcrange="-0.5 0.5" />
+                          <site name="right_ring_tip" pos="-0.018 0.0 -0.032" size="0.008" rgba="0 1 0 0.3" /><geom type="capsule" mesh="rf_l2" fitscale="1.0" rgba="0.5 0.5 0.5 1" group="0" contype="1" conaffinity="1" /></body>
+                      <geom type="capsule" mesh="rf_l1" fitscale="1.0" rgba="0.5 0.5 0.5 1" group="0" contype="1" conaffinity="1" /></body>
+                      <body name="R_lf_l1" pos="0.22558 -0.00370981 -0.0618286" quat="-0.0398188 -0.0434827 0.736186 -0.674206">
+                        <inertial pos="-0.01409 -0.0001 -0.0074" quat="0 0.590055 0 0.807363" mass="0.00137" diaginertia="1.27483e-07 1.12814e-07 5.56931e-08" />
+                        <joint name="R_lf_j1" pos="0 0 0" axis="0 1 0" range="-1.0118 0.2811" actuatorfrcrange="-0.5 0.5" />
+                        <body name="R_lf_l2" pos="-0.02974 -5e-05 -0.01163" quat="1 -1e-05 0 0">
+                          <inertial pos="-0.00835 0.00012 -0.01408" quat="0.960073 0.00366148 0.279653 -0.00641548" mass="0.00263" diaginertia="1.59094e-07 1.53221e-07 3.7442e-08" />
+                          <joint name="R_lf_j2" pos="0 0 0" axis="0 1 0" range="-1.1073 0.4014" actuatorfrcrange="-0.5 0.5" />
+                          <site name="right_little_tip" pos="-0.013 0.0 -0.032" size="0.008" rgba="0 1 0 0.3" /><geom type="capsule" mesh="lf_l2" fitscale="1.0" rgba="0.5 0.5 0.5 1" group="0" contype="1" conaffinity="1" /></body>
+                      <geom type="capsule" mesh="lf_l1" fitscale="1.0" rgba="0.5 0.5 0.5 1" group="0" contype="1" conaffinity="1" /></body>
+                    <site name="right_palm_site" pos="0.194 0.011 -0.031" size="0.02" rgba="1 0 0 0.3" /><geom type="capsule" mesh="arm_l7" fitscale="1.0" rgba="0.7 0.7 0.7 1" group="0" contype="1" conaffinity="1" /><geom type="capsule" mesh="arm_l8" fitscale="1.0" rgba="0.7 0.7 0.7 1" group="0" contype="1" conaffinity="1" pos="0.11597 0 -0.032" /><geom type="box" size="0.007 0.029 0.045" rgba="0.6 0.6 0.6 1" group="0" contype="1" conaffinity="1" pos="0.179 0.000 -0.033" quat="0.475 0.491 -0.529 -0.503" /></body>
+                  <geom type="capsule" mesh="R_arm_l6" fitscale="1.0" rgba="0.7 0.7 0.7 1" group="0" contype="1" conaffinity="1" /></body>
+                <geom type="capsule" mesh="arm_l5" fitscale="1.0" rgba="0.7 0.7 0.7 1" group="0" contype="1" conaffinity="1" pos="0 0 0" quat="1.32679e-06 1 0 0" /></body>
+              <geom type="capsule" mesh="arm_l4" fitscale="1.0" rgba="0.7 0.7 0.7 1" group="0" contype="1" conaffinity="1" /></body>
+            <geom type="capsule" mesh="arm_l3" fitscale="1.0" rgba="0.7 0.7 0.7 1" group="0" contype="1" conaffinity="1" /></body>
+          <geom type="capsule" mesh="arm_l2" fitscale="1.0" rgba="0.7 0.7 0.7 1" group="0" contype="1" conaffinity="1" /></body>
+        <geom type="capsule" mesh="R_arm_l1" fitscale="1.0" rgba="0.7 0.7 0.7 1" group="0" contype="1" conaffinity="1" /></body>
+      <geom type="sphere" size="0.001" mass="0.001" rgba="0 0 0 0" contype="0" conaffinity="0" /></body>
+    <geom type="sphere" size="0.001" mass="0.001" rgba="0 0 0 0" contype="0" conaffinity="0" /></body>
+  </worldbody>
+<actuator><position name="act_R_arm_j1" joint="R_arm_j1" kp="200" kv="40" ctrlrange="-3.0710 3.0710" forcerange="-200 200" /><position name="act_R_arm_j2" joint="R_arm_j2" kp="200" kv="40" ctrlrange="-1.5530 0.4530" forcerange="-200 200" /><position name="act_R_arm_j3" joint="R_arm_j3" kp="200" kv="40" ctrlrange="-3.0710 3.0710" forcerange="-200 200" /><position name="act_R_arm_j4" joint="R_arm_j4" kp="200" kv="40" ctrlrange="-3.0710 0.2440" forcerange="-200 200" /><position name="act_R_arm_j5" joint="R_arm_j5" kp="200" kv="40" ctrlrange="-3.0710 3.0710" forcerange="-200 200" /><position name="act_R_arm_j6" joint="R_arm_j6" kp="200" kv="40" ctrlrange="-1.3960 1.3960" forcerange="-200 200" /><position name="act_R_arm_j7" joint="R_arm_j7" kp="200" kv="40" ctrlrange="-1.1170 1.3780" forcerange="-200 200" /><position name="act_R_th_j0" joint="R_th_j0" kp="10" kv="2" ctrlrange="-0.0158 1.6050" forcerange="-20 20" /><position name="act_R_th_j1" joint="R_th_j1" kp="10" kv="2" ctrlrange="-0.3468 0.1834" forcerange="-20 20" /><position name="act_R_th_j2" joint="R_th_j2" kp="10" kv="2" ctrlrange="-0.4298 0.2731" forcerange="-20 20" /><position name="act_R_ff_j1" joint="R_ff_j1" kp="10" kv="2" ctrlrange="-1.0946 0.2891" forcerange="-20 20" /><position name="act_R_ff_j2" joint="R_ff_j2" kp="10" kv="2" ctrlrange="-1.2101 0.3681" forcerange="-20 20" /><position name="act_R_mf_j1" joint="R_mf_j1" kp="10" kv="2" ctrlrange="-1.0844 0.2801" forcerange="-20 20" /><position name="act_R_mf_j2" joint="R_mf_j2" kp="10" kv="2" ctrlrange="-1.2026 0.3533" forcerange="-20 20" /><position name="act_R_rf_j1" joint="R_rf_j1" kp="10" kv="2" ctrlrange="-1.0154 0.2840" forcerange="-20 20" /><position name="act_R_rf_j2" joint="R_rf_j2" kp="10" kv="2" ctrlrange="-1.1156 0.3599" forcerange="-20 20" /><position name="act_R_lf_j1" joint="R_lf_j1" kp="10" kv="2" ctrlrange="-1.0118 0.2811" forcerange="-20 20" /><position name="act_R_lf_j2" joint="R_lf_j2" kp="10" kv="2" ctrlrange="-1.1073 0.4014" forcerange="-20 20" /></actuator></mujoco>

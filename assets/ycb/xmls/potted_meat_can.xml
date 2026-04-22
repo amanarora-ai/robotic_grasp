@@ -1,0 +1,22 @@
+<mujoco model="potted_meat_can">
+  <!-- 010_potted_meat_can: 102x60x83mm, mass=0.368kg (full can) -->
+  <asset>
+    <mesh name="potted_meat_can_visual" file="../010_potted_meat_can/textured.obj" scale="0.01 0.01 0.01"/>
+  </asset>
+  <worldbody>
+    <body name="object">
+      <freejoint name="object_joint"/>
+      <!-- Collision: box primitive (no mesh vertices in simulation) -->
+      <geom name="object_geom" type="box" size="0.051 0.030 0.042"
+            pos="-0.0023 -0.0007 -0.008"
+            condim="4" friction="1 0.1 0.01"
+            contype="2" conaffinity="3"
+            solref="0.01 1" mass="0.368"
+            rgba="0.8 0.4 0.2 1"/>
+      <!-- Visual mesh (group=1: visible in viewer, hidden during training if needed) -->
+      <geom name="object_visual" type="mesh" mesh="potted_meat_can_visual"
+            contype="0" conaffinity="0" group="1" rgba="1 1 1 1"/>
+      <site name="object_site" pos="0 0 0" size="0.01" rgba="0 0 1 0.5"/>
+    </body>
+  </worldbody>
+</mujoco>

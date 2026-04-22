@@ -1,0 +1,21 @@
+<mujoco model="mug">
+  <!-- 025_mug: 117x92x81mm, mass=0.102kg -->
+  <asset>
+    <mesh name="mug_visual" file="../025_mug/textured.obj" scale="0.01 0.01 0.01"/>
+  </asset>
+  <worldbody>
+    <body name="object">
+      <freejoint name="object_joint"/>
+      <!-- Collision: box approx — MJX does not support cylinder-box collisions -->
+      <geom name="object_geom" type="box" size="0.046 0.046 0.040"
+            pos="0.0083 0.0006 0.0016"
+            condim="4" friction="1 0.1 0.01"
+            contype="2" conaffinity="3"
+            solref="0.01 1" mass="0.102"
+            rgba="0.7 0.5 0.3 1"/>
+      <geom name="object_visual" type="mesh" mesh="mug_visual"
+            contype="0" conaffinity="0" group="1" rgba="1 1 1 1"/>
+      <site name="object_site" pos="0 0 0" size="0.01" rgba="0 0 1 0.5"/>
+    </body>
+  </worldbody>
+</mujoco>

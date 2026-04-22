@@ -1,0 +1,19 @@
+# Core
+jax[cuda12]==0.10.0
+flax==0.12.6
+optax==0.2.8
+brax==0.14.2
+mujoco==3.7.0
+mujoco-mjx==3.7.0
+numpy==2.4.4
+ml-collections
+imageio[ffmpeg]
+tqdm
+lxml
+
+# Dependencies of mujoco_playground (installed separately, see README)
+absl-py
+etils
+mediapy
+orbax-checkpoint
+warp-lang

@@ -1,0 +1,21 @@
+<mujoco model="foam_brick">
+  <!-- 061_foam_brick: 52x78x51mm, mass=0.03kg -->
+  <asset>
+    <mesh name="foam_brick_visual" file="../061_foam_brick/textured.obj" scale="0.01 0.01 0.01"/>
+  </asset>
+  <worldbody>
+    <body name="object">
+      <freejoint name="object_joint"/>
+      <!-- Collision: box (foam brick is rectangular) -->
+      <geom name="object_geom" type="box" size="0.026 0.039 0.026"
+            pos="0.00015 0.000001 0.0083"
+            condim="4" friction="1 0.1 0.01"
+            contype="2" conaffinity="3"
+            solref="0.01 1" mass="0.03"
+            rgba="0.2 0.5 0.8 1"/>
+      <geom name="object_visual" type="mesh" mesh="foam_brick_visual"
+            contype="0" conaffinity="0" group="1" rgba="1 1 1 1"/>
+      <site name="object_site" pos="0 0 0" size="0.01" rgba="0 0 1 0.5"/>
+    </body>
+  </worldbody>
+</mujoco>

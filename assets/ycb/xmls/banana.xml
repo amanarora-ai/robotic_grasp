@@ -1,0 +1,22 @@
+<mujoco model="banana">
+  <!-- 011_banana: 109x178x37mm, mass=0.068kg -->
+  <asset>
+    <mesh name="banana_visual" file="../011_banana/textured.obj" scale="0.01 0.01 0.01"/>
+  </asset>
+  <worldbody>
+    <body name="object">
+      <freejoint name="object_joint"/>
+      <!-- Collision: capsule along Y axis (curved elongated shape) -->
+      <geom name="object_geom" type="capsule" size="0.018 0.071"
+            euler="90 0 0"
+            pos="0.0187 -0.0123 0.0014"
+            condim="4" friction="1 0.1 0.01"
+            contype="2" conaffinity="3"
+            solref="0.01 1" mass="0.068"
+            rgba="0.9 0.8 0.1 1"/>
+      <geom name="object_visual" type="mesh" mesh="banana_visual"
+            contype="0" conaffinity="0" group="1" rgba="1 1 1 1"/>
+      <site name="object_site" pos="0 0 0" size="0.01" rgba="0 0 1 0.5"/>
+    </body>
+  </worldbody>
+</mujoco>
