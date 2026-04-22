@@ -29,23 +29,23 @@ Sparse-reward from-scratch RL isn't going to work here. The space of 18-joint co
 
 **Validation renders (joints swept individually, and zero-control settle with locked left side):**
 
-<video src="joint_test.mp4" controls width="640" title="Per-joint axis and limit sweep — 18 actuators"></video>
+<video src="media/joint_test.mp4" controls width="640" title="Per-joint axis and limit sweep — 18 actuators"></video>
 
-<video src="robot_view.mp4" controls width="640" title="Zero-control settle: locked left side, right arm at rest"></video>
+<video src="media/robot_view.mp4" controls width="640" title="Zero-control settle: locked left side, right arm at rest"></video>
 
-*Fallbacks:* [joint_test.mp4](joint_test.mp4) · [robot_view.mp4](robot_view.mp4)
+*Fallbacks:* [joint_test.mp4](media/joint_test.mp4) · [robot_view.mp4](media/robot_view.mp4)
 
 ### 2.2 Scene
 
 Floor at z=0, table at z=0.78, object sitting on the table. The scene XML templates out the object body, so `envs/ycb_objects.inject_into_scene()` can swap in whichever YCB object is needed at load time.
 
-![Scene snapshot: robot at grasp-ready pose, object on table](scene_verify.png)
+![Scene snapshot: robot at grasp-ready pose, object on table](media/scene_verify.png)
 
-<video src="scene_verify.mp4" controls width="640" title="Full scene, robot in grasp-ready pose, 10 seconds"></video>
+<video src="media/scene_verify.mp4" controls width="640" title="Full scene, robot in grasp-ready pose, 10 seconds"></video>
 
-<video src="scene_verify_hand_closeup.mp4" controls width="640" title="Palm (red) and 5 fingertip sites (green) close-up"></video>
+<video src="media/scene_verify_hand_closeup.mp4" controls width="640" title="Palm (red) and 5 fingertip sites (green) close-up"></video>
 
-*Fallbacks:* [scene_verify.mp4](scene_verify.mp4) · [scene_verify_hand_closeup.mp4](scene_verify_hand_closeup.mp4)
+*Fallbacks:* [scene_verify.mp4](media/scene_verify.mp4) · [scene_verify_hand_closeup.mp4](media/scene_verify_hand_closeup.mp4)
 
 ### 2.3 YCB objects
 
@@ -147,9 +147,9 @@ Rendering the best policies showed me that a high grasp reward doesn't mean real
 
 **Grasp-by-brushing.** The original grasp reward fires at `touch > 0.01 N`. That's the weight of a 1-gram object sitting on the sensor, basically no force. Combined with the 8 cm fingertip gate, the policy learned that brushing the object lightly from arm's length is enough to accumulate grasp reward without closing the hand.
 
-<video src="videos/floor9_best_stage2.mp4" controls width="640" title="floor9 peak at 2D curriculum stage 2 — visible obj_touch/grasp hacking"></video>
+<video src="media/floor9_best_stage2.mp4" controls width="640" title="floor9 peak at 2D curriculum stage 2 — visible obj_touch/grasp hacking"></video>
 
-*Fallback:* [videos/floor9_best_stage2.mp4](videos/floor9_best_stage2.mp4)
+*Fallback:* [media/floor9_best_stage2.mp4](media/floor9_best_stage2.mp4)
 
 ### 4.3 Softgrasp variant
 
@@ -267,13 +267,13 @@ Plain SAC (no HER), sparse reward (reach + obj_touch + success), 200K replay buf
 
 **Rollouts from the best checkpoint, cube (4 episodes):**
 
-<video src="checkpoints/smallbuf_lowreach_v1/videos/best_policy.mp4" controls width="640" title="Reference policy, cube, 4 episodes"></video>
+<video src="media/best_policy.mp4" controls width="640" title="Reference policy, cube, 4 episodes"></video>
 
 **Same policy rendered on the banana (zero-shot, cube-trained):**
 
-<video src="checkpoints/smallbuf_lowreach_v1/videos/best_policy_banana.mp4" controls width="640" title="Same policy on banana — same failure mode as on cube"></video>
+<video src="media/best_policy_banana.mp4" controls width="640" title="Same policy on banana — same failure mode as on cube"></video>
 
-*Fallbacks:* [best_policy.mp4](checkpoints/smallbuf_lowreach_v1/videos/best_policy.mp4) · [best_policy_banana.mp4](checkpoints/smallbuf_lowreach_v1/videos/best_policy_banana.mp4)
+*Fallbacks:* [best_policy.mp4](media/best_policy.mp4) · [best_policy_banana.mp4](media/best_policy_banana.mp4)
 
 What this actually means:
 
@@ -344,18 +344,17 @@ robotic_grasp/
 
 ### Videos (full index)
 
+All media lives under `media/`:
+
 **Scene and robot validation:**
-- `scene_verify.mp4`, `scene_verify_hand_closeup.mp4`, `robot_view.mp4`, `joint_test.mp4`, `scene_verify.png`
+- `media/scene_verify.png`, `media/scene_verify.mp4`, `media/scene_verify_hand_closeup.mp4`, `media/robot_view.mp4`, `media/joint_test.mp4`
 
 **Reference policy (`smallbuf_lowreach_v1`):**
-- `checkpoints/smallbuf_lowreach_v1/videos/best_policy.mp4` — cube, 4 episodes, rendered from best params
-- `checkpoints/smallbuf_lowreach_v1/videos/best_policy_banana.mp4` — same policy, zero-shot on the banana
-- `videos/smallbuf_latest.mp4` — final-iter rollout
+- `media/best_policy.mp4` — cube, 4 episodes, rendered from best params
+- `media/best_policy_banana.mp4` — same policy, zero-shot on the banana
 
-**Other runs and diagnostics:**
-- `videos/floor9_best_stage2.mp4`, `videos/floor9_te12_sparse_nrst_v1_best.mp4`, `videos/stronglift_v1_latest.mp4`, `videos/synergy_sweep.mp4`
-- `videos/palm_site_check.mp4`
-- `videos/test2_{front,side,top,closeup,manual_grasp}.mp4`
+**Reward-hacking diagnostic:**
+- `media/floor9_best_stage2.mp4` — 2D curriculum stage-2 peak showing obj_touch/grasp milking
 
 ### How to reproduce
 

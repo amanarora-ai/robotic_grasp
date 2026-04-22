@@ -33,12 +33,16 @@ submission/
 ├── checkpoints/
 │   └── smallbuf_lowreach_v1/     # reference SAC run (best grasp policy)
 │       ├── best_params.msgpack
-│       ├── config.json
-│       └── videos/best_policy.mp4
-└── videos/                   # scene + robot validation renders
+│       └── config.json
+└── media/                    # all photos + videos (scene, robot, policies)
     ├── scene_verify.png
     ├── scene_verify.mp4
-    └── scene_verify_hand_closeup.mp4
+    ├── scene_verify_hand_closeup.mp4
+    ├── robot_view.mp4
+    ├── joint_test.mp4
+    ├── best_policy.mp4          # reference policy on cube
+    ├── best_policy_banana.mp4   # same policy, banana
+    └── floor9_best_stage2.mp4   # floor9 run demo
 ```
 
 ---
@@ -203,7 +207,7 @@ If all three complete without error, the setup is fully working.
 
 Best policy on the single-object task (reach, grasp, and partial lift — see REPORT.md §6.1 for the full analysis):
 
-- `checkpoints/smallbuf_lowreach_v1/videos/best_policy.mp4` — 4 episodes
+- `media/best_policy.mp4` — 4 episodes
 
 ---
 
